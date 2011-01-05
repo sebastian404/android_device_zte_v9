@@ -1,0 +1,12 @@
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+ro.secure=0
+ro.allow.mock.location=0
+ro.debuggable=1
+persist.service.adb.enable=1
+ro.build.date=Tue Jan  4 13:41:25 PST 2011
+ro.build.date.utc=1294177285
+ro.build.owner=sebastian404
+ro.build.url=http://android.podtwo.com/
+
