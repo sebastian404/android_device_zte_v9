@@ -20,7 +20,7 @@
 #include "common.h"
 #include "extendedcommands.h"
 
-char* MENU_HEADERS[] = { "Use vol keys to highlight and home to select.",
+char* MENU_HEADERS[] = { "Use vol keys to highlight and power to select.",
 			 "",
                          NULL };
 
@@ -70,9 +70,6 @@ int device_handle_key(int key_code, int visible) {
                     return GO_BACK;
                 break;
 
-	    case BTN_TOUCH:
-                return SELECT_ITEM;
-            
             case KEY_BACK:
                 if (!get_allow_toggle_display())
                     return GO_BACK;

@@ -3,7 +3,7 @@
 #when       whom            what, where, why
 #--------   ----            ---------------------------------------------------
 #2010-12-08 sebastian404    inital build
-#2011-01-04 sebastian404    horrible hack to get around adbd issue
+#2011-03-31 sebastian404    fix usbconfig for 2.6.32 kernel
 ##########################################
 
 on early-init
@@ -26,12 +26,8 @@ on init
     mkdir /etc 0770 root root
     mkdir /tmp 01777 root root
 
-    # ZTE Light has no recovery ADBD, horrible hack to work around that
-    mkdir /system/bin 0771 system system
-    symlink /sbin/sh /system/bin/sh
-
     # mount inital filesystems
-    mount tmpfs tmpfs /tmp size=4mi
+    mount tmpfs tmpfs /tmp size=8m
     devwait /dev/block/mmcblk0p1
     mount vfat /dev/block/mmcblk0p1 /sdcard rw
 
@@ -43,8 +39,9 @@ on boot
     class_start default
 
 service usbconfig /sbin/usbconfig
+    oneshot
 
-service recovery /sbin/recovery.sh
+service recovery /sbin/recovery
 
 service adbd /sbin/adbd recovery
 
